@@ -373,7 +373,7 @@
         if (externalIds.length === 0) return 0;
     
         try {
-            const response = await fetch('depositos.php', {
+            const response = await fetch('https://afiliados.up.bet.br/api/depositos.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ external_ids: externalIds, data: data })
@@ -394,7 +394,7 @@
 
     async function buscarInvestido(mes) {
     try {
-        const response = await fetch(`investimentos.php?mes=${mes}`);
+        const response = await fetch(`https://afiliados.up.bet.br/api/investimentos.php?mes=${mes}`);
         if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
         
         const result = await response.json();
@@ -419,7 +419,7 @@ async function gerarTabela() {
 
     try {
         // Busca cadastros
-        const respostaCadastros = await fetch(`cadastros2.php?mes=${mesInput}`);
+        const respostaCadastros = await fetch(`https://afiliados.up.bet.br/api/cadastros.php?mes=${mesInput}`);
         if (!respostaCadastros.ok) throw new Error('Erro ao buscar cadastros');
         const dadosCadastros = await respostaCadastros.json();
 
@@ -669,7 +669,7 @@ async function gerarTabela() {
                     return;
                 }
               
-                const response = await fetch(`cadastros_totais.php?mes=${mes}`);
+                const response = await fetch(`https://afiliados.up.bet.br/api/cadastros_totais.php?mes=${mes}`);
                 const dados = await response.json();
               
                 if (dados.erro) {
